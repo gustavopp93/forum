@@ -119,12 +119,12 @@
     </ul>
     {% endif %}
     <p>
-{#    <a href="{{ forum_post.get_absolute_url }}">{% trans "read more" %}</a>#}
+    <a href="{{ forum_post.get_absolute_url }}">{% trans "read more" %}</a>
 
-{##}
-{#    <a href="{{ forum_post.get_absolute_url }}#comments">#}
-{#        {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}#}
-{#    </a>#}
+
+    <a href="{{ forum_post.get_absolute_url }}#comments">
+        {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
+    </a>
     </p>
 </div>
 {% endblock %}

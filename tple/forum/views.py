@@ -54,19 +54,17 @@ class ForumPostView(object):
         return ForumPost.objects.published().select_related('user')
 
 
-class ForumPostDetailView(ForumPostView, DetailView):
+def forum_post_detail(request, slug, year=None, month=None, day=None,
+                     template="forum/detail.html"):
+    """. Custom templates are checked for using the name
+    ``blog/blog_post_detail_XXX.html`` where ``XXX`` is the blog
+    posts's slug.
     """
-    Link detail view - threaded comments and rating are implemented
-    in its template.
-    """
-    def get(self, request, *args, **kwargs):
-        return super(ForumPostDetailView, self).get(request, *args, **kwargs)
-
-    def get_object(self, queryset=None):
-        return super(ForumPostDetailView, self).get_object(queryset)
-
-    def dispatch(self, request, *args, **kwargs):
-        return super(ForumPostDetailView, self).dispatch(request, *args, **kwargs)
+    forum_posts = ForumPost.objects.published(for_user=request.user).select_related()
+    forum_post = get_object_or_404(forum_posts, slug=slug)
+    context = {"forum_post": forum_post, "editable_obj": forum_post}
+    templates = [u"forum/detail_%s.html" % str(slug), template]
+    return render(request, templates, context)
 
 
 def forum_post_list(request, tag=None, year=None, month=None, username=None,

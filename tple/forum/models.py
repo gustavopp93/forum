@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.conf import settings
 from django.core.urlresolvers import reverse
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from mezzanine.blog.models import BlogCategory
+from mezzanine.conf import settings
 
 from mezzanine.core.models import Displayable, Ownable, RichText
 from mezzanine.generic.fields import CommentsField, RatingField
