@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}chosen/chosen.min.css">
+
+</head>
+<body>
+    <form method="post" id="quick-blog-form">
+    {% csrf_token %}
+        <table id="quick-blog">
+            {{ form.as_table }}
+            <tr>
+                <td>&nbsp;</td>
+                <td style="width:100%;text-align:right;">
+                    <input type="submit" class="default"
+                        value="Guardar" />
+                </td>
+            </tr>
+        </table>
+</form>
+<script type="text/javascript" src="{{ STATIC_URL }}chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}ckeditor/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+    $("#id_categories").chosen();
+
+</script>
+</body>
+</html>

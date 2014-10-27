@@ -106,16 +106,16 @@ ALLOWED_HOSTS = ["*"]
 TIME_ZONE = "America/Lima"
 
 # If you set this to True, Django will use timezone-aware datetimes.
-USE_TZ = True
+USE_TZ = False
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "es"
 
 # Supported languages
 _ = lambda s: s
 LANGUAGES = (
-    ('en', _('English')),
+    ('es', _('Spanish')),
 )
 
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
@@ -235,10 +235,10 @@ INSTALLED_APPS = (
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.redirects",
+    # "django.contrib.redirects",
     "django.contrib.sessions",
     "django.contrib.sites",
-    "django.contrib.sitemaps",
+    # "django.contrib.sitemaps",
     "django.contrib.staticfiles",
     "mezzanine.boot",
     "mezzanine.conf",
@@ -250,8 +250,9 @@ INSTALLED_APPS = (
     "mezzanine.galleries",
     # "mezzanine.twitter",
     "forum",
-    #"mezzanine.accounts",
+    "mezzanine.accounts",
     #"mezzanine.mobile",
+    "ckeditor",
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -365,3 +366,24 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+
+COMMENTS_USE_RATINGS = False
+COMMENTS_ACCOUNT_REQUIRED = True
+RATINGS_ACCOUNT_REQUIRED = True
+
+CKEDITOR_UPLOAD_PATH = "media/uploads"
+
+# CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+           'default': {
+               'toolbar': 'standard',
+               'extraPlugins': 'youtube',
+               'allowContent ': True,
+           },
+       }
+
+ADMIN_REMOVAL = ()
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
