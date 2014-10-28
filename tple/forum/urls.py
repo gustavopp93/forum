@@ -14,7 +14,7 @@ _slashes = (
 )
 #
 urlpatterns = patterns("",
-    url(r"^create/$",
+    url(r"^/create/$",
         ForumPostCreateView.as_view(),
         name="forum_post_create"),
 )

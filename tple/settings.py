@@ -121,7 +121,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -143,7 +143,10 @@ TEMPLATE_LOADERS = (
     "django.template.loaders.app_directories.Loader",
 )
 
-AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.Facebook2OAuth2',
+    "mezzanine.core.auth_backends.MezzanineBackend",
+)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -165,13 +168,13 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
+        "ENGINE": "django.db.backends.mysql",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "forum",
         # Not used with sqlite3.
-        "USER": "",
+        "USER": "root",
         # Not used with sqlite3.
-        "PASSWORD": "",
+        "PASSWORD": "gustavo",
         # Set to empty string for localhost. Not used with sqlite3.
         "HOST": "",
         # Set to empty string for default. Not used with sqlite3.
@@ -217,7 +220,7 @@ MEDIA_URL = STATIC_URL + "media/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 
 # Package/module name to import the root urlpatterns from for the project.
-ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
+ROOT_URLCONF = "urls"
 
 # Put strings here, like "/home/html/django_templates"
 # or "C:/www/django/templates".
@@ -253,7 +256,10 @@ INSTALLED_APPS = (
     "mezzanine.accounts",
     #"mezzanine.mobile",
     "ckeditor",
+    "social.apps.django_app.default",
 )
+
+SECRET_KEY = 'mtd3p8#py1tr25+bj^jy*z9j40vx_+!4nth@#_4vb29mro7dds'
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its
@@ -343,11 +349,11 @@ OPTIONAL_APPS = (
 # Allow any settings to be defined in local_settings.py which should be
 # ignored in your version control system allowing for settings to be
 # defined per machine.
-try:
-    from local_settings import *
-except ImportError as e:
-    if "local_settings" not in str(e):
-        raise e
+# try:
+#     from local_settings import *
+# except ImportError as e:
+#     if "local_settings" not in str(e):
+#         raise e
 
 
 ####################
@@ -372,18 +378,56 @@ COMMENTS_USE_RATINGS = False
 COMMENTS_ACCOUNT_REQUIRED = True
 RATINGS_ACCOUNT_REQUIRED = True
 
-CKEDITOR_UPLOAD_PATH = "media/uploads"
+CKEDITOR_UPLOAD_PATH = "uploads"
 
 # CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
            'default': {
                'toolbar': 'standard',
-               'extraPlugins': 'youtube',
+               'extraPlugins': 'youtube,dragresize',
                'allowContent ': True,
+               'language': 'es'
            },
        }
 
 ADMIN_REMOVAL = ()
 
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+)
+
+
+
+LOGIN_REDIRECT_URL = '/forum/'
+
+#Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '1485171428416897'
+SOCIAL_AUTH_FACEBOOK_SECRET = '9a817aa8270646adfea7c0c212d5bdaf'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email',
+                              'public_profile',
+                              'user_birthday',
+                              'user_education_history']
+
+SOCIAL_AUTH_FACEBOOK_FIELD_SELECTORS = ['email', 'birthday', 'education']
+
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('email', 'email_address'),
+    ('birthday', 'birth_date'),
+    ('first_name', 'first_name'),
+    ('last_name', 'last_name'),
+    ('education', 'studies'),
+    ('link', 'link'),
+    ('gender', 'gender'),
+]

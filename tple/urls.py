@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from django.contrib.admin.sites import NotRegistered
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from mezzanine.conf import settings
 
 from mezzanine.core.views import direct_to_template
@@ -71,7 +71,9 @@ urlpatterns += patterns('',
     # ``mezzanine.urls``, go right ahead and take the parts you want
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
-    url(r'^forum/', include('forum.urls')),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+
+    url(r'^forum', include('forum.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
 
     # ("^", include("mezzanine.urls")),
