@@ -267,7 +267,7 @@ SECRET_KEY = 'mtd3p8#py1tr25+bj^jy*z9j40vx_+!4nth@#_4vb29mro7dds'
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.contrib.messages.context_processors.messages",
-    "django.core.context_processors.debug",
+    # "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
     "django.core.context_processors.static",
     "django.core.context_processors.media",
@@ -288,15 +288,16 @@ MIDDLEWARE_CLASSES = (
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    'forum.middleware.UrlRedirectMiddleware',   # TODO: FIND ANOTHER WAY TO ADMIN PERMISSIONS TO REGULAR USERS
     "mezzanine.core.request.CurrentRequestMiddleware",
-    "mezzanine.core.middleware.RedirectFallbackMiddleware",
-    "mezzanine.core.middleware.TemplateForDeviceMiddleware",
-    "mezzanine.core.middleware.TemplateForHostMiddleware",
+    # "mezzanine.core.middleware.RedirectFallbackMiddleware",
+    # "mezzanine.core.middleware.TemplateForDeviceMiddleware",
+    # "mezzanine.core.middleware.TemplateForHostMiddleware",
     "mezzanine.core.middleware.AdminLoginInterfaceSelectorMiddleware",
     "mezzanine.core.middleware.SitePermissionMiddleware",
     # Uncomment the following if using any of the SSL settings:
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
-    "mezzanine.pages.middleware.PageMiddleware",
+    # "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
 
@@ -311,7 +312,7 @@ PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 
 # These will be added to ``INSTALLED_APPS``, only if available.
 OPTIONAL_APPS = (
-    "debug_toolbar",
+    # "debug_toolbar",
     "django_extensions",
     "compressor",
     PACKAGE_NAME_FILEBROWSER,
@@ -379,7 +380,6 @@ COMMENTS_ACCOUNT_REQUIRED = True
 RATINGS_ACCOUNT_REQUIRED = True
 
 CKEDITOR_UPLOAD_PATH = "uploads"
-
 
 
 ADMIN_REMOVAL = ()

@@ -137,8 +137,8 @@
         var opener = window.opener;
         if (opener) {
             opener.window.document.location.href=window.location.href;
+            window.close();
         }
-        window.close();
     {% endif %}
 </script>
 </body>
