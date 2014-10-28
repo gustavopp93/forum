@@ -3,9 +3,8 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from mezzanine.conf import settings
 
+from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
 
 
@@ -74,7 +73,6 @@ urlpatterns += patterns('',
     url('', include('social.apps.django_app.urls', namespace='social')),
 
     url(r'^forum', include('forum.urls')),
-    url(r'^ckeditor/', include('ckeditor.urls')),
 
     # ("^", include("mezzanine.urls")),
 

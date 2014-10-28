@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.decorators import method_decorator
+from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
@@ -109,6 +110,7 @@ def forum_post_list(request, tag=None, year=None, month=None, username=None,
                "tag": tag, "category": category, "author": author}
     templates.append(template)
     return render(request, templates, context)
+
 
 class ForumPostCreateView(CreateView):
     template_name = 'forum/create.html'

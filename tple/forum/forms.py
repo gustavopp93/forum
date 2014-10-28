@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from ckeditor.fields import RichTextField, RichTextFormField
 
 from django import forms
 
@@ -11,6 +10,21 @@ from django import forms
 # these specified.
 from forum.models import ForumPost
 
+class TinyMceWidget(forms.Textarea):
+    """
+    Setup the JS files and targetting CSS class for a textarea to
+    use TinyMCE.
+    """
+
+    class Media:
+        js = ("tinymezzce4/js/tinymce/tinymce.min.js",
+              "tinymezzce4/js/tinymce_setup.js")
+        css = {'all': ("tinymezzce4/css/tinymce.css",)}
+
+    def __init__(self, *args, **kwargs):
+        super(TinyMceWidget, self).__init__(*args, **kwargs)
+        self.attrs["class"] = "mceEditor"
+
 
 class ForumPostModelForm(forms.ModelForm):
     """
@@ -18,10 +32,9 @@ class ForumPostModelForm(forms.ModelForm):
     admin dashboard.
     """
 
-    content = RichTextFormField()
-
     def __init__(self, *args, **kwargs):
         super(ForumPostModelForm, self).__init__(*args, **kwargs)
+        self.fields['content'].widget = TinyMceWidget()
 
     class Meta:
         model = ForumPost

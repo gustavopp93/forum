@@ -255,8 +255,8 @@ INSTALLED_APPS = (
     "forum",
     "mezzanine.accounts",
     #"mezzanine.mobile",
-    "ckeditor",
     "social.apps.django_app.default",
+    "tinymezzce4",
 )
 
 SECRET_KEY = 'mtd3p8#py1tr25+bj^jy*z9j40vx_+!4nth@#_4vb29mro7dds'
@@ -380,20 +380,10 @@ RATINGS_ACCOUNT_REQUIRED = True
 
 CKEDITOR_UPLOAD_PATH = "uploads"
 
-# CKEDITOR_IMAGE_BACKEND = "pillow"
 
-CKEDITOR_CONFIGS = {
-           'default': {
-               'toolbar': 'standard',
-               'extraPlugins': 'youtube,dragresize',
-               'allowContent ': True,
-               'language': 'es'
-           },
-       }
 
 ADMIN_REMOVAL = ()
 
-CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
@@ -406,7 +396,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
 )
-
 
 
 LOGIN_REDIRECT_URL = '/forum/'
@@ -431,3 +420,7 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('link', 'link'),
     ('gender', 'gender'),
 ]
+
+
+RICHTEXT_WIDGET_CLASS = 'forum.forms.TinyMceWidget'
+TINYMCE_SETUP_JS = '/static/tinymezzce4/js/tinymce_setup.js'
