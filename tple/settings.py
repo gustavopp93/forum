@@ -424,3 +424,27 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 
 RICHTEXT_WIDGET_CLASS = 'forum.forms.TinyMceWidget'
 TINYMCE_SETUP_JS = '/static/tinymezzce4/js/tinymce_setup.js'
+
+
+# AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+# AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+# # Enable S3 deployment only if we have the AWS keys
+# S3_DEPLOYMENT=AWS_ACCESS_KEY_ID is not None
+# if S3_DEPLOYMENT:
+#     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+#     AWS_QUERYSTRING_AUTH = False
+#     AWS_S3_SECURE_URLS = False
+#     AWS_S3_ENCRYPTION =  False
+#     from boto.s3.connection import ProtocolIndependentOrdinaryCallingFormat
+#     AWS_S3_CALLING_FORMAT = ProtocolIndependentOrdinaryCallingFormat()
+#
+#     DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
+#     DEFAULT_S3_PATH = "media"
+#     MEDIA_ROOT = ''
+#     MEDIA_URL = ''
+#
+#     STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
+#     STATIC_S3_PATH = "static"
+#     STATIC_ROOT = "/%s/" % STATIC_S3_PATH
+#     STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
+#     ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
