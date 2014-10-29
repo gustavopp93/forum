@@ -252,11 +252,12 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     # "mezzanine.twitter",
+    "social.apps.django_app.default",
     "forum",
     "mezzanine.accounts",
     #"mezzanine.mobile",
-    "social.apps.django_app.default",
     "tinymezzce4",
+    # 'storages',
 )
 
 SECRET_KEY = 'mtd3p8#py1tr25+bj^jy*z9j40vx_+!4nth@#_4vb29mro7dds'
@@ -400,6 +401,7 @@ SOCIAL_AUTH_PIPELINE = (
 
 LOGIN_REDIRECT_URL = '/forum/'
 
+#TODO: CHANGE FACEBOOK CREDENTIALS
 #Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = '1485171428416897'
 SOCIAL_AUTH_FACEBOOK_SECRET = '9a817aa8270646adfea7c0c212d5bdaf'
@@ -429,7 +431,7 @@ TINYMCE_SETUP_JS = '/static/tinymezzce4/js/tinymce_setup.js'
 # AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 # # Enable S3 deployment only if we have the AWS keys
-# S3_DEPLOYMENT=AWS_ACCESS_KEY_ID is not None
+# S3_DEPLOYMENT = AWS_ACCESS_KEY_ID is not None
 # if S3_DEPLOYMENT:
 #     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 #     AWS_QUERYSTRING_AUTH = False

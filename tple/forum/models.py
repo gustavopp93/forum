@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.contrib.comments.models import CommentFlag
 from django.core.urlresolvers import reverse
 
 from django.db import models
+from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 from mezzanine.blog.models import BlogCategory
 from mezzanine.conf import settings
 
 from mezzanine.core.models import Displayable, Ownable, RichText
 from mezzanine.generic.fields import CommentsField, RatingField
+from mezzanine.generic.models import ThreadedComment
 
 
 class ForumPost(Displayable, Ownable, RichText):
@@ -51,3 +54,16 @@ class ForumPost(Displayable, Ownable, RichText):
                 if date_part == settings.BLOG_URLS_DATE_FORMAT:
                     break
         return reverse(url_name, kwargs=kwargs)
+
+
+class CustomThreadedComment(ThreadedComment):
+
+    def commented_flag(self):
+        flag = CommentFlag.objects.filter(comment_id=self.comment_ptr_id).count()
+        url = reverse('admin:comments_commentflag_changelist') + "?comment__id__exact=" + str(self.comment_ptr_id)
+        return format_html('<a href="{0}">{1}</a>', url, flag)
+
+    class Meta:
+        proxy = True
+        verbose_name = _("Comment")
+        verbose_name_plural = _("Comments")
