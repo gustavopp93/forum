@@ -153,7 +153,7 @@ AUTHENTICATION_BACKENDS = (
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # "django.contrib.staticfiles.finders.DefaultStorageFinder",
 )
 
 # The numeric mode to set newly-uploaded files to. The value should be
@@ -257,7 +257,7 @@ INSTALLED_APPS = (
     "mezzanine.accounts",
     #"mezzanine.mobile",
     "tinymezzce4",
-    # 'storages',
+    'storages',
 )
 
 SECRET_KEY = 'mtd3p8#py1tr25+bj^jy*z9j40vx_+!4nth@#_4vb29mro7dds'
@@ -380,9 +380,6 @@ COMMENTS_USE_RATINGS = True
 COMMENTS_ACCOUNT_REQUIRED = True
 RATINGS_ACCOUNT_REQUIRED = True
 
-CKEDITOR_UPLOAD_PATH = "uploads"
-
-
 ADMIN_REMOVAL = ()
 
 
@@ -428,27 +425,27 @@ RICHTEXT_WIDGET_CLASS = 'forum.forms.TinyMceWidget'
 TINYMCE_SETUP_JS = '/static/tinymezzce4/js/tinymce_setup.js'
 
 
-# AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-# AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-# # Enable S3 deployment only if we have the AWS keys
-# S3_DEPLOYMENT = AWS_ACCESS_KEY_ID is not None
-# if S3_DEPLOYMENT:
-#     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-#     AWS_QUERYSTRING_AUTH = False
-#     AWS_S3_SECURE_URLS = False
-#     AWS_S3_ENCRYPTION =  False
-#     from boto.s3.connection import ProtocolIndependentOrdinaryCallingFormat
-#     AWS_S3_CALLING_FORMAT = ProtocolIndependentOrdinaryCallingFormat()
-#
-#     DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
-#     DEFAULT_S3_PATH = "media"
-#     MEDIA_ROOT = ''
-#     MEDIA_URL = ''
-#
-#     STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
-#     STATIC_S3_PATH = "static"
-#     STATIC_ROOT = "/%s/" % STATIC_S3_PATH
-#     STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
-#     ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+AWS_SECRET_ACCESS_KEY = "CFQ9TOoDvSO5e/s4bzys1CuOSpgGVHle9vZkp+eZ"
+AWS_ACCESS_KEY_ID = "AKIAJEMKA346LY5MPGPA"
+# Enable S3 deployment only if we have the AWS keys
+S3_DEPLOYMENT = False
+if S3_DEPLOYMENT:
+    AWS_STORAGE_NAME = "forumtxe"
+    AWS_STORAGE_BUCKET_NAME = "forumtxe"
+    AWS_QUERYSTRING_AUTH = False
+    AWS_S3_SECURE_URLS = False
+    AWS_S3_ENCRYPTION =  False
+    from boto.s3.connection import OrdinaryCallingFormat
+    AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 
-# SPAMS_ACCOUNT_REQUIRED = True
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_S3_PATH = "media"
+    MEDIA_ROOT = ''
+    # MEDIA_URL = STATIC_URL = '//s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
+    MEDIA_URL = ''
+
+    STATICFILES_STORAGE = 'storages.backends.s3.StaticStorage'
+    STATIC_S3_PATH = "static"
+    STATIC_ROOT = "/%s/" % STATIC_S3_PATH
+    STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
