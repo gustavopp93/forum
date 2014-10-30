@@ -6,6 +6,7 @@ from django.contrib import admin
 
 from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
+from forum.views import spam
 
 
 admin.autodiscover()
@@ -73,6 +74,8 @@ urlpatterns += patterns('',
     url('', include('social.apps.django_app.urls', namespace='social')),
 
     url(r'^forum', include('forum.urls')),
+
+    url(r'^spam/$', spam, name="spam"),
 
     # ("^", include("mezzanine.urls")),
 

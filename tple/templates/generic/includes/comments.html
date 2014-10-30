@@ -1,4 +1,4 @@
-{% load i18n mezzanine_tags comment_tags %}
+{% load i18n mezzanine_tags comment_tags spam_tags %}
 <div id="comments">
 <h3>{% trans "Comments" %}</h3>
 {#{% if settings.COMMENTS_DISQUS_SHORTNAME %}#}
@@ -10,10 +10,14 @@ $(function() {
         $('.comment-reply-form').hide();
         $(this).siblings('.comment-reply-form').toggle();
     });
+    $('.spam').click(function(){
+        $('.comment-spam-form').hide();
+        $(this).siblings('.comment-spam-form').toggle();
+    });
 });
 </script>
 <style>.input_id_honeypot {display:none !important;}</style>
-{% comment_thread object_for_comments %}
+{% custom_comment_thread object_for_comments %}
 <h3>{% trans "New Comment" %}</h3>
 <form method="post" id="comment" action="{{ comment_url }}#comment">
     {% if not request.POST.replied_to %}

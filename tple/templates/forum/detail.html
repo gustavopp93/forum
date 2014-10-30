@@ -1,5 +1,5 @@
 {% extends "forum/list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future spam_tags %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -71,26 +71,26 @@
 {% endblock %}
 
 {% block blog_post_previous_next %}
-<ul class="pager">
-{% with forum_post.get_previous_by_publish_date as previous %}
-{% if previous %}
-<li class="previous">
-    <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
-</li>
-{% endif %}
-{% endwith %}
-{% with forum_post.get_next_by_publish_date as next %}
-{% if next %}
-<li class="next">
-    <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
-</li>
-{% endif %}
-{% endwith %}
-</ul>
+    <ul class="pager">
+    {% with forum_post.get_previous_by_publish_date as previous %}
+    {% if previous %}
+    <li class="previous">
+        <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+    </li>
+    {% endif %}
+    {% endwith %}
+    {% with forum_post.get_next_by_publish_date as next %}
+    {% if next %}
+    <li class="next">
+        <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+    </li>
+    {% endif %}
+    {% endwith %}
+    </ul>
 {% endblock %}
 
 {% block blog_post_detail_comments %}
-{% comments_for forum_post %}
+    {% custom_comments_for forum_post %}
 {% endblock %}
 
 {% endblock %}

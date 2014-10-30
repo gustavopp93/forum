@@ -1,4 +1,4 @@
-{% load i18n mezzanine_tags comment_tags rating_tags %}
+{% load i18n mezzanine_tags comment_tags rating_tags spam_tags %}
 
 {% for comment in comments_for_thread %}
 
@@ -27,28 +27,43 @@
     
     {% if not comment.is_removed and comment.is_public %}
 
-{#    <a href="{{ request.path }}#comment-{{ comment.id }}">#}
-{#        <span class="glyphicon glyphicon-link"></span> {% trans "Link" %}#}
-{#    </a> |#}
+        {% if request.user.is_authenticated %}
+            <a href="{{ request.path }}#spam-{{ comment.id }}" class="spam">
+                <span class="glyphicon glyphicon-link"></span>
+                {% trans "Spam" %}
+            </a> |
+        {% endif %}
 
     <a href="#reply-{{ comment.id }}" class="reply">
         <span class="glyphicon glyphicon-share-alt"></span> {% trans "Reply" %}
     </a>
 
-{#    {% if settings.COMMENTS_USE_RATINGS %}#}
-{#    <div class="rating">#}
-{#    {% rating_for comment %}#}
-{#    </div>#}
-{#    {% endif %}#}
+    {% if settings.COMMENTS_USE_RATINGS %}
+        <div class="rating">
+            {% rating_for comment %}
+        </div>
+    {% endif %}
+
+    <form class="comment-spam-form" method="post" id="spam-{{ comment.id }}"
+        action="{% url 'spam' %}#spam-{{ comment.id }}"
+        {% if spam_to != comment.id %}style="display:none;"{% endif %}>
+            {% if spam_to == comment.id %}
+                {% fields_for spam_form %}
+            {% else %}
+                {% fields_for spam_form %}
+            {% endif %}
+        <input type="hidden" name="spam_to" value="{{ comment.id }}">
+        <input class="btn btn-primary btn-lg" type="submit" value="{% trans 'Spam' %}">
+    </form>
 
     <form class="comment-reply-form" method="post" id="reply-{{ comment.id }}"
         action="{{ comment_url }}#reply-{{ comment.id }}"
         {% if replied_to != comment.id %}style="display:none;"{% endif %}>
-        {% if replied_to == comment.id %}
-        {% fields_for posted_comment_form %}
-        {% else %}
-        {% fields_for unposted_comment_form %}
-        {% endif %}
+            {% if replied_to == comment.id %}
+                {% fields_for posted_comment_form %}
+            {% else %}
+                {% fields_for unposted_comment_form %}
+            {% endif %}
         <input type="hidden" name="replied_to" value="{{ comment.id }}">
         <input class="btn btn-primary btn-lg" type="submit" value="{% trans "Reply" %}">
     </form>
@@ -64,7 +79,7 @@
     </p>
     {% endif %}
 
-    {% comment_thread comment %}
+    {% custom_comment_thread comment %}
     
     {% if not comment.is_removed and comment.is_public or request.user.is_staff %}</div>{% endif %}
     {% endeditable %}
@@ -72,6 +87,5 @@
 {% endfor %}
 
 {% if no_comments %}
-<p>{% trans "There are currently no comments" %}</p>
+    <p>{% trans "There are currently no comments" %}</p>
 {% endif %}
-

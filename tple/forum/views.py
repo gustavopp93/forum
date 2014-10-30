@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.messages import info
 from django.core.urlresolvers import reverse
-from django.http import Http404
-from django.shortcuts import get_object_or_404
+from django.http import Http404, HttpResponse
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
@@ -16,9 +16,11 @@ from django.views.generic.list import ListView
 from mezzanine.blog.models import BlogCategory
 from mezzanine.conf import settings
 from mezzanine.generic.models import Keyword
-from mezzanine.utils.views import paginate, render
+from mezzanine.generic.views import initial_validation
+from mezzanine.utils.cache import add_cache_bypass
+from mezzanine.utils.views import paginate, render, is_spam, set_cookie
 
-from forum.forms import ForumPostModelForm
+from forum.forms import ForumPostModelForm, CommentFlagForm
 
 from forum.models import ForumPost
 
@@ -129,3 +131,25 @@ class ForumPostCreateView(CreateView):
 
     def get_success_url(self):
         return reverse("forum_post_list")
+
+
+def spam(request, template="generic/comments.html"):
+    response = initial_validation(request, "spam")
+    if isinstance(response, HttpResponse):
+        return response
+    obj, post_data = response
+    form = CommentFlagForm(request, obj, post_data)
+    if form.is_valid():
+        url = obj.get_absolute_url()
+        if is_spam(request, form, url):
+            return redirect(url)
+        form.save(request)
+        response = redirect(add_cache_bypass(obj.get_absolute_url()))
+        # for field in CommentFlagForm.cookie_fields:
+        #     cookie_name = CommentFlagForm.cookie_prefix + field
+        #     cookie_value = post_data.get(field, "")
+        #     set_cookie(response, cookie_name, cookie_value)
+        return response
+    context = {"obj": obj, "spam_form": form}
+    response = render(request, template, context)
+    return response

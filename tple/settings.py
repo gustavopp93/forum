@@ -376,7 +376,7 @@ else:
     set_dynamic_settings(globals())
 
 
-COMMENTS_USE_RATINGS = False
+COMMENTS_USE_RATINGS = True
 COMMENTS_ACCOUNT_REQUIRED = True
 RATINGS_ACCOUNT_REQUIRED = True
 
@@ -450,3 +450,5 @@ TINYMCE_SETUP_JS = '/static/tinymezzce4/js/tinymce_setup.js'
 #     STATIC_ROOT = "/%s/" % STATIC_S3_PATH
 #     STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
 #     ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+# SPAMS_ACCOUNT_REQUIRED = True
