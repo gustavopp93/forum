@@ -1,65 +1,78 @@
 {% load forum_tags keyword_tags mezzanine_tags i18n future %}
 
 {% block blog_recent_posts %}
-{% forum_recent_posts 5 as recent_posts %}
-{% if recent_posts %}
-<h3>{% trans "Recent Posts" %}</h3>
-<ul class="list-unstyled recent-posts">
-{% for recent_post in recent_posts %}
-<li>
-    {% spaceless %}
-    <a href="{{ recent_post.get_absolute_url }}">
-    {{ recent_post.title }}
-    </a>
-    {% endspaceless %}
-</li>
-{% endfor %}
-</ul>
-{% endif %}
+    {% forum_recent_posts 5 as recent_posts %}
+    {% if recent_posts %}
+        <h4>Posts recientes</h4>
+        <div class="hline"></div>
+        <ul class="popular-posts">
+            {% for recent_post in recent_posts %}
+            <li>
+                <p>
+                    <a href="{{ recent_post.get_absolute_url }}">
+                        {{ recent_post.title }}
+                    </a>
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
 
 {% block blog_months %}
-{% forum_months as months %}
-{% if months %}
-<h3>{% trans "Archive" %}</h3>
-{% for month in months %}
-    {% ifchanged month.date.year %}
-        {% if not forloop.first %}
-            </ul>
-        {% endif %}
-        <h6>{{ month.date.year }}</h6><ul class="list-unstyled">
-    {% endifchanged %}
-    <li><a href="{% url "forum_post_list_month" year=month.date.year month=month.date.month %}"
-        >{{ month.date|date:"F" }}</a> ({{ month.post_count }})</li>
-{% endfor %}
-</ul>
-{% endif %}
+    {% forum_months as months %}
+    {% if months %}
+        <div class="spacing"></div>
+        <h4>{% trans "Archive" %}</h4>
+        <div class="hline"></div>
+        {% for month in months %}
+            {% ifchanged month.date.year %}
+                {% if not forloop.first %}
+                    </ul>
+                {% endif %}
+                <h6>{{ month.date.year }}</h6><ul class="list-unstyled">
+            {% endifchanged %}
+            <li><a href="{% url "forum_post_list_month" year=month.date.year month=month.date.month %}"
+                >{{ month.date|date:"F" }}</a> ({{ month.post_count }})</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
 
+<div class="spacing"></div>
+
 {% block blog_categories %}
-{% forum_categories as categories %}
-{% if categories %}
-<h3>{% trans "Categories" %}</h3>
-<ul class="list-unstyled">
-{% for category in categories %}
-<li><a href="{% url "forum_post_list_category" category.slug %}"
-    >{{ category }}</a> ({{ category.post_count }})</li>
-{% endfor %}
-</ul>
-{% endif %}
+    {% forum_categories as categories %}
+    {% if categories %}
+        <h4>Categorias</h4>
+        <div class="hline"></div>
+        {% for category in categories %}
+            <p>
+                <a href="{% url "forum_post_list_category" category.slug %}">
+                    <i class="fa fa-angle-right"></i>
+                    {{ category }}
+                </a>
+                <span class="badge badge-theme pull-right">
+                    {{ category.post_count }}
+                </span>
+            </p>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
 
 
 {% block blog_authors %}
-{% forum_authors as authors %}
-{% if authors %}
-<h3>{% trans "Authors" %}</h3>
-<ul class="list-unstyled">
-{% for author in authors %}
-    <li><a href="{% url "forum_post_list_author" author.username %}"
-        >{{ author.get_full_name|default:author.username }}</a>
-        ({{ author.post_count }})</li>
-{% endfor %}
-</ul>
-{% endif %}
+    {% forum_authors as authors %}
+    {% if authors %}
+        <div class="spacing"></div>
+        <h4>Autores</h4>
+        <div class="hline"></div>
+        <p>
+            {% for author in authors %}
+                <a href="{% url "forum_post_list_author" author.username %}"
+                    ><i class="fa fa-angle-right"></i> {{ author.get_full_name|default:author.username }}</a>
+                    ({{ author.post_count }})
+            {% endfor %}
+        </p>
+    {% endif %}
 {% endblock %}

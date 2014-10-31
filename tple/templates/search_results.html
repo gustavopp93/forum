@@ -17,8 +17,8 @@
 
 {% block main %}
 
-<p>
 {% if results.paginator.count == 0 %}
+<p>
 {% blocktrans %}
 No results were found in {{ search_type }} matching your query: {{ query }}
 {% endblocktrans %}

@@ -23,74 +23,72 @@
 
 {% block main %}
 
-{% block blog_post_detail_postedby %}
-{% editable forum_post.publish_date %}
-<h6 class="post-meta">
-    {% trans "Posted by" %}:
-    {% with forum_post.user as author %}
-    <a href="{% url "forum_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
-    {% endwith %}
-    {% blocktrans with sometime=forum_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
-{% endeditable %}
-{% endblock %}
-{% block blog_post_detail_commentlink %}
-<p>
-  (<a href="#comments">{% spaceless %}
-            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-            {% endspaceless %}</a>)
-{% endblock %}
+    {% block blog_post_list_post_metainfo %}
+        {{ block.super }}
+    {% endblock %}
 
+    {% block blog_post_detail_content %}
+        {% editable forum_post.content %}
+        {{ forum_post.content|richtext_filters|safe }}
+        {% endeditable %}
+    {% endblock %}
 
-{% block blog_post_detail_content %}
-{% editable forum_post.content %}
-{{ forum_post.content|richtext_filters|safe }}
-{% endeditable %}
-{% endblock %}
+    {% block blog_post_detail_keywords %}
+        {% keywords_for forum_post as tags %}
+        {% if tags %}
+            {% spaceless %}
+            <ul class="list-inline tags">
+                <li>Tags</li>
+                {% for tag in tags %}
+                <li><a href="{% url "forum_post_list_tag" tag.slug %}">{{ tag }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endspaceless %}
+        {% endif %}
+    {% endblock %}
 
-{% block blog_post_detail_keywords %}
-{% keywords_for forum_post as tags %}
-{% if tags %}
-{% spaceless %}
-<ul class="list-inline tags">
-    <li>{% trans "Tags" %}:</li>
-    {% for tag in tags %}
-    <li><a href="{% url "forum_post_list_tag" tag.slug %}">{{ tag }}</a></li>
-    {% endfor %}
-</ul>
-{% endspaceless %}
-{% endif %}
-{% endblock %}
+    {% block blog_post_detail_rating %}
+        <div class="panel panel-default rating">
+            <div class="panel-body">
+            {% rating_for forum_post %}
+            </div>
+        </div>
+    {% endblock %}
 
-{% block blog_post_detail_rating %}
-<div class="panel panel-default rating">
-    <div class="panel-body">
-    {% rating_for forum_post %}
-    </div>
-</div>
-{% endblock %}
+    {% block blog_post_previous_next %}
+        <ul class="pager">
+        {% with forum_post.get_previous_by_publish_date as previous %}
+            {% if previous %}
+                <li class="previous">
+                    <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+                </li>
+            {% endif %}
+        {% endwith %}
+        {% with forum_post.get_next_by_publish_date as next %}
+            {% if next %}
+                <li class="next">
+                    <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+                </li>
+            {% endif %}
+        {% endwith %}
+        </ul>
+    {% endblock %}
 
-{% block blog_post_previous_next %}
-    <ul class="pager">
-    {% with forum_post.get_previous_by_publish_date as previous %}
-    {% if previous %}
-    <li class="previous">
-        <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
-    </li>
-    {% endif %}
-    {% endwith %}
-    {% with forum_post.get_next_by_publish_date as next %}
-    {% if next %}
-    <li class="next">
-        <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
-    </li>
-    {% endif %}
-    {% endwith %}
-    </ul>
-{% endblock %}
+    {% block blog_post_detail_related_posts %}
+        {% if forum_post.related_posts.all %}
+            <div id="related-posts">
+                <h3>Posts relacionados:</h3>
+                <ul class="list-unstyled">
+                {% for post in forum_post.related_posts.all %}
+                     <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endblock %}
 
-{% block blog_post_detail_comments %}
-    {% custom_comments_for forum_post %}
-{% endblock %}
+    {% block blog_post_detail_comments %}
+        {% custom_comments_for forum_post %}
+    {% endblock %}
 
 {% endblock %}

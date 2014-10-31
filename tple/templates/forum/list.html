@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n future mezzanine_tags forum_tags keyword_tags %}
 
-{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}Foro{% endif %}{% endblock %}
 
 {% block meta_keywords %}{% metablock %}
 {% keywords_for page as keywords %}
@@ -41,6 +41,9 @@
 {% endif %}
 {% endblock %}
 
+{% block left_wrapper %}
+{% endblock %}
+<div class="col-md-{% block main_width %}8 {% endblock %}">
 {% block main %}
 
 {% if tag or category or year or month or author %}
@@ -74,28 +77,60 @@
 {% for forum_post in forum_posts.object_list %}
 {% block blog_post_list_post_title %}
 {% editable forum_post.title %}
-<h2>
-    <a href="{{ forum_post.get_absolute_url }}">{{ forum_post.title }}</a>
-</h2>
+
+    <a href="{{ forum_post.get_absolute_url }}">
+        <h3 class="ctitle">
+            {{ forum_post.title }}
+        </h3>
+    </a>
+
 {% endeditable %}
 {% endblock %}
 {% block blog_post_list_post_metainfo %}
 {% editable forum_post.publish_date %}
-<h6 class="post-meta">
+
+    <csmall>
     {% trans "Posted by" %}:
     {% with forum_post.user as author %}
     <a href="{% url "forum_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
     {% endwith %}
+    </csmall>
+    |
+
     {% with forum_post.categories.all as categories %}
     {% if categories %}
+     <csmall>
     {% trans "in" %}
     {% for category in categories %}
     <a href="{% url "forum_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
     {% endfor %}
+    |
     {% endif %}
+     </csmall>
+
     {% endwith %}
+
+    <csmall>
     {% blocktrans with sometime=forum_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
-</h6>
+     </csmall>
+    |
+
+    <csmall>
+        {% if forum_post.allow_comments %}
+
+{#    {% if settings.COMMENTS_DISQUS_SHORTNAME %}#}
+{#    <a href="{{ blog_post.get_absolute_url }}#disqus_thread"#}
+{#        data-disqus-identifier="{% disqus_id_for blog_post %}">#}
+{#        {% trans "Comments" %}#}
+{#    </a>#}
+{#    {% else %}#}
+    <a href="{{ forum_post.get_absolute_url }}#comments">
+        {% blocktrans count comments_count=forum_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
+    </a>
+{#    {% endif %}#}
+    {% endif %}
+       </csmall>
+
 {% endeditable %}
 {% endblock %}
 
@@ -121,10 +156,6 @@
     <p>
     <a href="{{ forum_post.get_absolute_url }}">{% trans "read more" %}</a>
 
-
-    <a href="{{ forum_post.get_absolute_url }}#comments">
-        {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-    </a>
     </p>
 </div>
 {% endblock %}
@@ -134,7 +165,10 @@
 
 
 {% endblock %}
+</div>
 
+<div class="col-md-{% block right_width %}4 {% endblock %} middle">
 {% block right_panel %}
 {% include "forum/includes/filter_panel.html" %}
 {% endblock %}
+</div>

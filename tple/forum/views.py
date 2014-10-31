@@ -104,6 +104,7 @@ def forum_post_list(request, tag=None, year=None, month=None, username=None,
         templates.append(u"forum/list_%s.html" % username)
 
     prefetch = ("categories", "keywords__keyword")
+    forum_posts = forum_posts.order_by('-publish_date')
     forum_posts = forum_posts.select_related("user").prefetch_related(*prefetch)
     forum_posts = paginate(forum_posts, request.GET.get("page", 1),
                           settings.BLOG_POST_PER_PAGE,
