@@ -1,13 +1,13 @@
-{% extends 'base.html' %}
-
-{% block extra_head %}
+<!doctype html>
+<html>
+    <head>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
     <link rel="stylesheet" href="{{ STATIC_URL }}tinymezzce4/css/tinymce.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}chosen/chosen.min.css">
     <script type="text/javascript" src="{{ STATIC_URL }}tinymezzce4/js/tinymce/tinymce.min.js"></script>
-{% endblock extra_head %}
-
-{% block main %}
-    <form method="post" id="quick-blog-form">
+    </head>
+<body>
+<form method="post" id="quick-blog-form">
     {% csrf_token %}
         <table id="quick-blog">
             {{ form.as_table }}
@@ -34,4 +34,7 @@
     <script type="text/javascript">
         $("#id_categories").chosen({width: '100%'});
     </script>
-{% endblock main %}
+</body>
+</html>
+
+

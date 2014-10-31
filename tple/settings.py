@@ -4,6 +4,14 @@ from __future__ import absolute_import, unicode_literals
 # MEZZANINE SETTINGS #
 ######################
 
+#########
+# PATHS #
+#########
+
+import os
+
+# Full filesystem path to the project.
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # The following settings are already defined with default values in
 # the ``defaults.py`` module within each of Mezzanine's apps, but are
 # common enough to be put here, commented out, for convenient
@@ -76,6 +84,51 @@ from __future__ import absolute_import, unicode_literals
 # BLOG_USE_FEATURED_IMAGE = True
 
 # If True, the south application will be automatically added to the
+AWS_SECRET_ACCESS_KEY = ""
+AWS_ACCESS_KEY_ID = ""
+# Enable S3 deployment only if we have the AWS keys
+S3_DEPLOYMENT = False
+if S3_DEPLOYMENT:
+    AWS_STORAGE_NAME = "forumtxe"
+    AWS_STORAGE_BUCKET_NAME = "forumtxe"
+    AWS_QUERYSTRING_AUTH = False
+    AWS_S3_SECURE_URLS = False
+    AWS_S3_ENCRYPTION =  False
+    from boto.s3.connection import OrdinaryCallingFormat
+    AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_S3_PATH = "media"
+    MEDIA_ROOT = ''
+    MEDIA_URL = '//s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
+
+    STATICFILES_STORAGE = 'storages.backends.s3.StaticStorage'
+    STATIC_S3_PATH = "static"
+    STATIC_ROOT = "/%s/" % STATIC_S3_PATH
+    STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+else:
+    # URL prefix for static files.
+    # Example: "http://media.lawrence.com/static/"
+    STATIC_URL = "/static/"
+
+    # Absolute path to the directory static files should be collected to.
+    # Don't put anything in this directory yourself; store your static files
+    # in apps' "static/" subdirectories and in STATICFILES_DIRS.
+    # Example: "/home/media/media.lawrence.com/static/"
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
+
+    # URL that handles the media served from MEDIA_ROOT. Make sure to use a
+    # trailing slash.
+    # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+    MEDIA_URL = STATIC_URL + "media/"
+
+    # Absolute filesystem path to the directory that will hold user-uploaded files.
+    # Example: "/home/media/media.lawrence.com/media/"
+    MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
+
+
 # INSTALLED_APPS setting.
 USE_SOUTH = True
 
@@ -183,14 +236,7 @@ DATABASES = {
 }
 
 
-#########
-# PATHS #
-#########
 
-import os
-
-# Full filesystem path to the project.
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Name of the directory for the project.
 PROJECT_DIRNAME = PROJECT_ROOT.split(os.sep)[-1]
@@ -400,50 +446,6 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('link', 'link'),
     ('gender', 'gender'),
 ]
-
-AWS_SECRET_ACCESS_KEY = ""
-AWS_ACCESS_KEY_ID = ""
-# Enable S3 deployment only if we have the AWS keys
-S3_DEPLOYMENT = False
-if S3_DEPLOYMENT:
-    AWS_STORAGE_NAME = "forumtxe"
-    AWS_STORAGE_BUCKET_NAME = "forumtxe"
-    AWS_QUERYSTRING_AUTH = False
-    AWS_S3_SECURE_URLS = False
-    AWS_S3_ENCRYPTION =  False
-    from boto.s3.connection import OrdinaryCallingFormat
-    AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
-
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    DEFAULT_S3_PATH = "media"
-    MEDIA_ROOT = ''
-    MEDIA_URL = '//s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
-
-    STATICFILES_STORAGE = 'storages.backends.s3.StaticStorage'
-    STATIC_S3_PATH = "static"
-    STATIC_ROOT = "/%s/" % STATIC_S3_PATH
-    STATIC_URL = '//s3.amazonaws.com/%s/static/' % AWS_STORAGE_BUCKET_NAME
-    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-
-else:
-    # URL prefix for static files.
-    # Example: "http://media.lawrence.com/static/"
-    STATIC_URL = "/static/"
-
-    # Absolute path to the directory static files should be collected to.
-    # Don't put anything in this directory yourself; store your static files
-    # in apps' "static/" subdirectories and in STATICFILES_DIRS.
-    # Example: "/home/media/media.lawrence.com/static/"
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
-
-    # URL that handles the media served from MEDIA_ROOT. Make sure to use a
-    # trailing slash.
-    # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-    MEDIA_URL = STATIC_URL + "media/"
-
-    # Absolute filesystem path to the directory that will hold user-uploaded files.
-    # Example: "/home/media/media.lawrence.com/media/"
-    MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 
 RICHTEXT_WIDGET_CLASS = 'forum.forms.TinyMceWidget'
 TINYMCE_SETUP_JS = STATIC_URL + 'tinymezzce4/js/tinymce_setup.js'

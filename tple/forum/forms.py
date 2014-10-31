@@ -10,7 +10,7 @@ from django import forms
 # these specified.
 from django.contrib.comments.forms import CommentSecurityForm
 from django.contrib.comments.models import CommentFlag
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 
 from mezzanine.core.forms import Html5Mixin
 
