@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+<html lang="{{ LANGUAGE_CODE }}">
 {% load pages_tags mezzanine_tags i18n future staticfiles %}
 
 <head>
@@ -8,48 +8,48 @@
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
-<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
-
-{% ifinstalled mezzanine.blog %}
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
-{% endifinstalled %}
+<script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
+{##}
+{#{% ifinstalled mezzanine.blog %}#}
+{#<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">#}
+{#<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">#}
+{#{% endifinstalled %}#}
 
 {% compress css %}
-<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/mezzanine.css">
 
 
- <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css" />
+ <link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	
-    <link href="{% static "css/style.css" %}" rel="stylesheet">
+ <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
 
 
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/rtl.css" %}">
-{% endif %}
-{% ifinstalled cartridge.shop %}
-<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
-{% endif %}
-{% endifinstalled %}
+{#{% if LANGUAGE_BIDI %}#}
+{#<link rel="stylesheet" href="{% static "css/rtl.css" %}">#}
+{#{% endif %}#}
+{#{% ifinstalled cartridge.shop %}#}
+{#<link rel="stylesheet" href="{% static "css/cartridge.css" %}">#}
+{#{% if LANGUAGE_BIDI %}#}
+{#<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">#}
+{#{% endif %}#}
+{#{% endifinstalled %}#}
 {% block extra_css %}{% endblock %}
 {% endcompress %}
 
 {% compress js %}
-<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-<script src="{% static "js/bootstrap.js" %}"></script>
-<script src="{% static "js/bootstrap-extras.js" %}"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap-extras.js"></script>
 {% block extra_js %}{% endblock %}
 {% include "includes/footer_scripts.html" %}
 {% endcompress %}
 
 <!--[if lt IE 9]>
-<script src="{% static "js/html5shiv.js" %}"></script>
-<script src="{% static "js/respond.min.js" %}"></script>
+<script src="{{ STATIC_URL }}js/html5shiv.js"></script>
+<script src="{{ STATIC_URL }}js/respond.min.js"></script>
 <![endif]-->
 
 {% block extra_head %}{% endblock %}
@@ -129,11 +129,11 @@
     {% include "includes/user_panel.html" %}
     {% endnevercache %}
   
-    {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
-    {% endblock %}
+{#    {% block right_panel %}#}
+{#    {% ifinstalled mezzanine.twitter %}#}
+{#    {% include "twitter/tweets.html" %}#}
+{#    {% endifinstalled %}#}
+{#    {% endblock %}#}
     
 </div>
 {% endblock %}
@@ -188,12 +188,12 @@
      <!-- Placed at the end of the document so the pages load faster -->
    
    
-	<script src="{% static "js/retina-1.1.0.js" %}"></script>
-	<script src="{% static "js/jquery.hoverdir.js" %}"></script>
-	<script src="{% static "js/jquery.hoverex.min.js" %}"></script>
-	<script src="{% static "js/jquery.prettyPhoto.js" %}"></script>
-  	<script src="{% static "js/jquery.isotope.min.js" %}"></script>
-  	<script src="{% static "js/custom.js" %}"></script>
+	<script src="{{ STATIC_URL }}js/retina-1.1.0.js"></script>
+	<script src="{{ STATIC_URL }}js/jquery.hoverdir.js"></script>
+	<script src="{{ STATIC_URL }}js/jquery.hoverex.min.js"></script>
+	<script src="{{ STATIC_URL }}js/jquery.prettyPhoto.js"></script>
+  	<script src="{{ STATIC_URL }}js/jquery.isotope.min.js"></script>
+  	<script src="{{ STATIC_URL }}js/custom.js"></script>
   	    <script>
 // Portfolio
 (function($) {

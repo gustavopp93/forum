@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 
 {% block extra_head %}
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-    <link href="{{ STATIC_URL }}tinymezzce4/css/tinymce.css" type="text/css" media="all" rel="stylesheet">
+    <link rel="stylesheet" href="{{ STATIC_URL }}tinymezzce4/css/tinymce.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}chosen/chosen.min.css">
     <script type="text/javascript" src="{{ STATIC_URL }}tinymezzce4/js/tinymce/tinymce.min.js"></script>
 {% endblock extra_head %}
@@ -34,15 +33,5 @@
     </script>
     <script type="text/javascript">
         $("#id_categories").chosen({width: '100%'});
-    </script>
-
-    <script type="text/javascript">
-        {% if request.user.is_authenticated %}
-           var opener = window.opener;
-            if (opener) {
-                opener.window.document.location.href=window.location.href;
-                window.close();
-            }
-        {% endif %}
     </script>
 {% endblock main %}
