@@ -425,8 +425,8 @@ RICHTEXT_WIDGET_CLASS = 'forum.forms.TinyMceWidget'
 TINYMCE_SETUP_JS = '/static/tinymezzce4/js/tinymce_setup.js'
 
 
-AWS_SECRET_ACCESS_KEY = "CFQ9TOoDvSO5e/s4bzys1CuOSpgGVHle9vZkp+eZ"
-AWS_ACCESS_KEY_ID = "AKIAJEMKA346LY5MPGPA"
+AWS_SECRET_ACCESS_KEY = ""
+AWS_ACCESS_KEY_ID = ""
 # Enable S3 deployment only if we have the AWS keys
 S3_DEPLOYMENT = False
 if S3_DEPLOYMENT:
