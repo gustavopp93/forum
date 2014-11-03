@@ -119,7 +119,7 @@ USE_TZ = False
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "es"
+LANGUAGE_CODE = "en"
 
 # Supported languages
 _ = lambda s: s
@@ -212,6 +212,8 @@ ROOT_URLCONF = "urls"
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 
+SITE_TITLE = 'Todos por la educaci\xf3n'
+
 
 ################
 # APPLICATIONS #
@@ -242,6 +244,7 @@ INSTALLED_APPS = (
     #"mezzanine.mobile",
     "tinymezzce4",
     'storages',
+    'crispy_forms',
 )
 
 SECRET_KEY = 'mtd3p8#py1tr25+bj^jy*z9j40vx_+!4nth@#_4vb29mro7dds'
@@ -359,8 +362,7 @@ except ImportError:
 else:
     set_dynamic_settings(globals())
 
-#TODO: TAMANHO DE ACHIVO EN BYTES
-FILEBROWSER_MAX_UPLOAD_SIZE = 12740
+FILEBROWSER_MAX_UPLOAD_SIZE = 102400
 
 
 COMMENTS_USE_RATINGS = True
@@ -459,3 +461,5 @@ TINYMCE_SETUP_JS = STATIC_URL + 'tinymezzce4/js/tinymce_setup.js'
 LOCALE_PATHS = (
     os.path.join(PROJECT_ROOT, 'conf/locale') ,
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'

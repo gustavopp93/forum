@@ -30,7 +30,7 @@
         {% if request.user.is_authenticated %}
             <a href="{{ request.path }}#spam-{{ comment.id }}" class="spam">
                 <span class="glyphicon glyphicon-link"></span>
-                {% trans "Spam" %}
+                Spam
             </a> |
         {% endif %}
 
@@ -53,7 +53,7 @@
                 {% fields_for spam_form %}
             {% endif %}
         <input type="hidden" name="spam_to" value="{{ comment.id }}">
-        <input class="btn btn-primary btn-lg" type="submit" value="{% trans 'Spam' %}">
+        <input class="btn btn-primary btn-lg" type="submit" value="Marcar como Spam">
     </form>
 
     <form class="comment-reply-form" method="post" id="reply-{{ comment.id }}"

@@ -12,6 +12,8 @@ from django.contrib.comments.forms import CommentSecurityForm
 from django.contrib.comments.models import CommentFlag
 from django.utils.translation import ugettext_lazy as _
 
+from crispy_forms.helper import FormHelper
+
 from mezzanine.core.forms import Html5Mixin
 
 from forum.models import ForumPost
@@ -39,6 +41,10 @@ class ForumPostModelForm(forms.ModelForm):
     """
 
     def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.form_show_errors = True
+        self.helper.form_tag = False
+        self.helper.form_class = 'form-horizontal'
         super(ForumPostModelForm, self).__init__(*args, **kwargs)
         self.fields['content'].widget = TinyMceWidget()
 

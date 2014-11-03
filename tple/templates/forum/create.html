@@ -1,40 +1,40 @@
-<!doctype html>
-<html>
-    <head>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-    <link rel="stylesheet" href="{{ STATIC_URL }}tinymezzce4/css/tinymce.css">
+{% extends "base.html" %}
+{% load i18n crispy_forms_tags %}
+
+{% block extra_css %}
     <link rel="stylesheet" href="{{ STATIC_URL }}chosen/chosen.min.css">
-    <script type="text/javascript" src="{{ STATIC_URL }}tinymezzce4/js/tinymce/tinymce.min.js"></script>
-    </head>
-<body>
-<form method="post" id="quick-blog-form">
-    {% csrf_token %}
-        <table id="quick-blog">
-            {{ form.as_table }}
-            <tr>
-                <td>&nbsp;</td>
-                <td style="width:100%;text-align:right;">
-                    <input type="submit" class="default"
-                        value="Guardar" />
-                </td>
-            </tr>
-        </table>
-    </form>
+{% endblock extra_css %}
+
+{% block extra_js %}
     <script type="text/javascript" src="{{ STATIC_URL }}chosen/chosen.jquery.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}tinymezzce4/js/tinymce_setup.js"></script>
-    <script>
-        window.__csrf_token = '{{ csrf_token }}';
-        window.__admin_keywords_submit_url = '/admin_keywords_submit/';
-        window.__filebrowser_url = '/admin/media-library/browse/';
-    {#    window.__tinymce_css = '/static/mezzanine/css/tinymce.css';#}
-    {#    window.__static_proxy = '/asset_proxy/';#}
-    {#    window.__grappelli_installed = true;#}
-    {#    window.__admin_menu_collapsed = false;#}
-    </script>
+{% endblock extra_js %}
+
+{% block title %}
+    {% trans 'Crear post' %}
+{% endblock title %}
+
+{% block left_wrapper %}
+{% endblock left_wrapper %}
+
+{% block main %}
+    <form method="post" id="quick-blog-form">
+        {% csrf_token %}
+        {% crispy form %}
+        <input type="submit" class="btn btn-primary" value="Guardar" />
+    </form>
     <script type="text/javascript">
         $("#id_categories").chosen({width: '100%'});
+
+        $('#div_id_title').find('label').after('<i class="fa fa-question-circle" id="title-tooltip"></i>');
+        $('#title-tooltip').tooltip({title: 'Recuerda que debe ser lo más descriptivo posible'});
+
+        $('#div_id_content').find('label').after('<i class="fa fa-question-circle" id="content-tooltip"></i>');
+        $('#content-tooltip').tooltip({title: 'Cuéntanos tu aporte o duda referente a la educación'});
+
+        $('#div_id_categories').find('label').after('<i class="fa fa-question-circle" id="categories-tooltip"></i>');
+        $('#categories-tooltip').tooltip({title: 'Asigna una o más etiquetas para tu contribución'});
     </script>
-</body>
-</html>
+{% endblock main %}
+{% block right_wrapper %}
 
-
+{% endblock right_wrapper %}

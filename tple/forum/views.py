@@ -1,27 +1,28 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 from calendar import month_name
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from django.contrib.messages import info
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
-from django.views.generic.base import TemplateView
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
+
 from mezzanine.blog.models import BlogCategory
 from mezzanine.conf import settings
 from mezzanine.generic.models import Keyword
 from mezzanine.generic.views import initial_validation
 from mezzanine.utils.cache import add_cache_bypass
-from mezzanine.utils.views import paginate, render, is_spam, set_cookie
+from mezzanine.utils.views import paginate, render, is_spam
 
 from forum.forms import ForumPostModelForm, CommentFlagForm
-
 from forum.models import ForumPost
 
 
@@ -145,6 +146,7 @@ def spam(request, template="generic/comments.html"):
         if is_spam(request, form, url):
             return redirect(url)
         form.save(request)
+        messages.info(request, _('Se guardó como spam'))
         response = redirect(add_cache_bypass(obj.get_absolute_url()))
         # for field in CommentFlagForm.cookie_fields:
         #     cookie_name = CommentFlagForm.cookie_prefix + field
