@@ -130,6 +130,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
+#TODO: CAMBIAR A False
 DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
@@ -358,6 +359,7 @@ except ImportError:
 else:
     set_dynamic_settings(globals())
 
+#TODO: TAMANHO DE ACHIVO EN BYTES
 FILEBROWSER_MAX_UPLOAD_SIZE = 12740
 
 
@@ -453,3 +455,7 @@ else:
 
 RICHTEXT_WIDGET_CLASS = 'forum.forms.TinyMceWidget'
 TINYMCE_SETUP_JS = STATIC_URL + 'tinymezzce4/js/tinymce_setup.js'
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_ROOT, 'conf/locale') ,
+)

@@ -3,7 +3,7 @@
 {% block blog_recent_posts %}
     {% forum_recent_posts 5 as recent_posts %}
     {% if recent_posts %}
-        <h4>Posts recientes</h4>
+        <h4>{% trans "Recent Posts" %}</h4>
         <div class="hline"></div>
         <ul class="popular-posts">
             {% for recent_post in recent_posts %}
@@ -44,7 +44,7 @@
 {% block blog_categories %}
     {% forum_categories as categories %}
     {% if categories %}
-        <h4>Categorias</h4>
+        <h4>{% trans "Categories" %}</h4>
         <div class="hline"></div>
         {% for category in categories %}
             <p>
@@ -65,7 +65,7 @@
     {% forum_authors as authors %}
     {% if authors %}
         <div class="spacing"></div>
-        <h4>Autores</h4>
+        <h4>{% trans 'Authors' %}</h4>
         <div class="hline"></div>
         <p>
             {% for author in authors %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-03 09:10-0500\n"
+"POT-Creation-Date: 2014-11-03 11:40-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:171
+#: settings.py:127
 msgid "Spanish"
 msgstr ""
 
@@ -35,6 +35,7 @@ msgid "Requerido (no publicado)"
 msgstr ""
 
 #: forum/models.py:22 templates/blog/includes/filter_panel.html:52
+#: templates/forum/includes/filter_panel.html:47
 msgid "Categories"
 msgstr ""
 
@@ -82,6 +83,7 @@ msgid "Home"
 msgstr ""
 
 #: templates/index.html:231 templates/blog/includes/filter_panel.html:6
+#: templates/forum/includes/filter_panel.html:6
 msgid "Recent Posts"
 msgstr ""
 
@@ -183,6 +185,7 @@ msgid "Archive"
 msgstr ""
 
 #: templates/blog/includes/filter_panel.html:84
+#: templates/forum/includes/filter_panel.html:68
 msgid "Authors"
 msgstr ""
 
