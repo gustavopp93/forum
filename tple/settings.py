@@ -130,7 +130,7 @@ LANGUAGES = (
 # A boolean that turns on/off debug mode. When set to ``True``, stack traces
 # are displayed for error pages. Should always be set to ``False`` in
 # production. Best set to ``True`` in local_settings.py
-DEBUG = False
+DEBUG = True
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -358,7 +358,7 @@ except ImportError:
 else:
     set_dynamic_settings(globals())
 
-# FILEBROWSER_MAX_UPLOAD_SIZE = 12
+FILEBROWSER_MAX_UPLOAD_SIZE = 12740
 
 
 COMMENTS_USE_RATINGS = True
@@ -409,7 +409,7 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 AWS_SECRET_ACCESS_KEY = ""
 AWS_ACCESS_KEY_ID = ""
 # Enable S3 deployment only if we have the AWS keys
-S3_DEPLOYMENT = True
+S3_DEPLOYMENT = False
 if S3_DEPLOYMENT:
     AWS_STORAGE_NAME = "forumtxe"
     AWS_STORAGE_BUCKET_NAME = "forumtxe"
