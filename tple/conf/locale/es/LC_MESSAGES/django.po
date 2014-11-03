@@ -1,0 +1,355 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-03 09:10-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings.py:171
+msgid "Spanish"
+msgstr ""
+
+#: forum/admin.py:26
+msgid "Meta data"
+msgstr ""
+
+#: forum/forms.py:52 templates/generic/includes/comment.html:33
+#: templates/generic/includes/comment.html:56
+msgid "Spam"
+msgstr ""
+
+#: forum/forms.py:53
+msgid "Requerido (no publicado)"
+msgstr ""
+
+#: forum/models.py:22 templates/blog/includes/filter_panel.html:52
+msgid "Categories"
+msgstr ""
+
+#: forum/models.py:25 forum/models.py:69
+#: templates/generic/includes/comments.html:3
+msgid "Comments"
+msgstr ""
+
+#: forum/models.py:26
+msgid "Rating"
+msgstr ""
+
+#: forum/models.py:29
+msgid "Forum post"
+msgstr ""
+
+#: forum/models.py:30
+msgid "Forum posts"
+msgstr ""
+
+#: forum/models.py:68 templates/generic/includes/comments.html:29
+msgid "Comment"
+msgstr ""
+
+#: templates/base.html:67
+msgid "Toggle Navigation"
+msgstr ""
+
+#: templates/base.html:176
+msgid "Template by"
+msgstr ""
+
+#: templates/base.html:178
+msgid "Mezzanine theme by"
+msgstr ""
+
+#: templates/index.html:4 templates/search_results.html:13
+#: templates/pages/menus/breadcrumb.html:4
+#: templates/pages/menus/breadcrumb.html:10
+#: templates/pages/menus/dropdown1.html:10
+#: templates/pages/menus/footer_tree.html:11
+#: templates/pages/menus/mobile.html:10 templates/pages/menus/primary.html:8
+#: templates/pages/menus/tree.html:9
+msgid "Home"
+msgstr ""
+
+#: templates/index.html:231 templates/blog/includes/filter_panel.html:6
+msgid "Recent Posts"
+msgstr ""
+
+#: templates/search_results.html:5 templates/search_results.html.py:6
+#: templates/search_results.html:15
+msgid "Search Results"
+msgstr ""
+
+#: templates/search_results.html:22
+#, python-format
+msgid ""
+"\n"
+"No results were found in %(search_type)s matching your query: %(query)s\n"
+msgstr ""
+
+#: templates/search_results.html:26
+#, python-format
+msgid ""
+"\n"
+"Showing %(start)s to %(end)s of %(total)s results in %(search_type)s "
+"matching your query: %(query)s\n"
+msgstr ""
+
+#: templates/search_results.html:37 templates/forum/list.html:157
+msgid "read more"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:53
+#: templates/blog/blog_post_list.html:153
+#: templates/blog/includes/filter_panel.html:67 templates/forum/list.html:148
+msgid "Tags"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:98
+msgid "Related posts"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:4 templates/blog/blog_post_list.html:22
+msgid "Blog"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:31 templates/forum/list.html:31
+msgid "Tag:"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:33 templates/forum/list.html:33
+msgid "Category:"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:37 templates/forum/list.html:37
+msgid "Author:"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:53 templates/forum/list.html:53
+msgid "Viewing posts tagged"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:55 templates/forum/list.html:55
+msgid "Viewing posts for the category"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:57 templates/forum/list.html:57
+msgid "Viewing posts from"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:60 templates/forum/list.html:60
+msgid "Viewing posts by"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:99 templates/forum/list.html:93
+msgid "Posted by"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:108 templates/forum/list.html:103
+msgid "in"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:118 templates/forum/list.html:114
+#: templates/generic/includes/comment.html:22
+#: templates/generic/includes/comment.html:78 templates/twitter/tweets.html:19
+#, python-format
+msgid "%(sometime)s ago"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:131 templates/forum/list.html:128
+#, python-format
+msgid "%(comments_count)s comment"
+msgid_plural "%(comments_count)s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/blog/blog_post_list.html:162
+msgid "[read more]"
+msgstr ""
+
+#: templates/blog/includes/filter_panel.html:35
+#: templates/forum/includes/filter_panel.html:26
+msgid "Archive"
+msgstr ""
+
+#: templates/blog/includes/filter_panel.html:84
+msgid "Authors"
+msgstr ""
+
+#: templates/email/comment_notification.html:6
+msgid "A new comment has been posted on"
+msgstr ""
+
+#: templates/email/comment_notification.html:10
+#, python-format
+msgid ""
+"\n"
+"    At %(submit_date)s %(user_name)s wrote:\n"
+"    "
+msgstr ""
+
+#: templates/email/comment_notification.txt:7
+#, python-format
+msgid ""
+"\n"
+"At %(submit_date)s %(user_name)s wrote:\n"
+msgstr ""
+
+#: templates/errors/404.html:6 templates/errors/404.html.py:10
+#: templates/errors/404.html:15
+msgid "Page not found"
+msgstr ""
+
+#: templates/errors/404.html:16
+msgid "The page you requested does not exist."
+msgstr ""
+
+#: templates/errors/500.html:6 templates/errors/500.html.py:10
+#: templates/errors/500.html:15
+msgid "Error"
+msgstr ""
+
+#: templates/errors/500.html:16
+msgid "Sorry, an error occurred."
+msgstr ""
+
+#: templates/filebrowser/index.html:63
+msgid "New Folder"
+msgstr ""
+
+#: templates/filebrowser/index.html:64
+msgid "Upload"
+msgstr ""
+
+#: templates/filebrowser/include/filelisting.html:18
+msgid "Select"
+msgstr ""
+
+#: templates/filebrowser/include/filelisting.html:32
+#: templates/filebrowser/include/filelisting.html:46
+#: templates/filebrowser/include/filelisting.html:60
+msgid "Select File"
+msgstr ""
+
+#: templates/filebrowser/include/filelisting.html:76
+msgid "View Image"
+msgstr ""
+
+#: templates/filebrowser/include/filelisting.html:92
+msgid "Rename"
+msgstr ""
+
+#: templates/filebrowser/include/filelisting.html:105
+msgid "Are you sure you want to delete this file?"
+msgstr ""
+
+#: templates/filebrowser/include/filelisting.html:105
+msgid "Delete File"
+msgstr ""
+
+#: templates/filebrowser/include/filelisting.html:108
+msgid "Are you sure you want to delete this Folder?"
+msgstr ""
+
+#: templates/filebrowser/include/filelisting.html:108
+msgid "Delete Folder"
+msgstr ""
+
+#: templates/forum/list.html:22
+msgid "Forum"
+msgstr ""
+
+#: templates/generic/includes/comment.html:38
+#: templates/generic/includes/comment.html:68
+msgid "Reply"
+msgstr ""
+
+#: templates/generic/includes/comment.html:74
+msgid "Comment deleted"
+msgstr ""
+
+#: templates/generic/includes/comment.html:76
+msgid "Comment awaiting approval"
+msgstr ""
+
+#: templates/generic/includes/comment.html:90
+msgid "There are currently no comments"
+msgstr ""
+
+#: templates/generic/includes/comments.html:21
+msgid "New Comment"
+msgstr ""
+
+#: templates/generic/includes/rating.html:5
+msgid "Current rating"
+msgstr ""
+
+#: templates/generic/includes/rating.html:7
+msgid "Currently unrated"
+msgstr ""
+
+#: templates/generic/includes/rating.html:17
+msgid "Rate"
+msgstr ""
+
+#: templates/includes/editable_form.html:16
+msgid "Save"
+msgstr ""
+
+#: templates/includes/editable_form.html:17
+msgid "Cancel"
+msgstr ""
+
+#: templates/includes/editable_form.html:25
+msgid "Edit"
+msgstr ""
+
+#: templates/includes/editable_toolbar.html:8
+msgid "Admin"
+msgstr ""
+
+#: templates/includes/editable_toolbar.html:9
+msgid "Log out"
+msgstr ""
+
+#: templates/includes/form_errors.html:8
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/includes/pagination.html:7
+msgid "Page"
+msgstr ""
+
+#: templates/includes/pagination.html:7
+msgid "of"
+msgstr ""
+
+#: templates/includes/search_form.html:5
+msgid "Search"
+msgstr ""
+
+#: templates/includes/search_form.html:14
+msgid "Everything"
+msgstr ""
+
+#: templates/includes/search_form.html:26
+msgid "Go"
+msgstr ""
+
+#: templates/pages/menus/admin.html:31
+msgid "Add"
+msgstr ""
+
+#: templates/twitter/tweets.html:7
+msgid "Recent Tweets"
+msgstr ""
