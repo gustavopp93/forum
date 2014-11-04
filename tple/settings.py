@@ -276,7 +276,7 @@ MIDDLEWARE_CLASSES = (
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    'forum.middleware.UrlRedirectMiddleware',   # TODO: FIND ANOTHER WAY TO ADMIN PERMISSIONS TO REGULAR USERS
+    'forum.middleware.UrlRedirectMiddleware',
     "mezzanine.core.request.CurrentRequestMiddleware",
     # "mezzanine.core.middleware.RedirectFallbackMiddleware",
     # "mezzanine.core.middleware.TemplateForDeviceMiddleware",
@@ -409,7 +409,7 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('gender', 'gender'),
 ]
 
-
+#TODO: ADD S3 CREDENTIALS
 AWS_SECRET_ACCESS_KEY = ""
 AWS_ACCESS_KEY_ID = ""
 # Enable S3 deployment only if we have the AWS keys
