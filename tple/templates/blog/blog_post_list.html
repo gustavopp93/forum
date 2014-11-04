@@ -98,7 +98,9 @@
 	<csmall>
     {% trans "Posted by" %}:
     {% with blog_post.user as author %}
-    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+    <a href="{% url "blog_post_list_author" author %}" class="href-color">
+        {{ author.get_full_name|default:author.username }}
+    </a>
     {% endwith %}
     </csmall>
    |
@@ -107,7 +109,10 @@
      <csmall>
     {% trans "in" %}
     {% for category in categories %}
-    <a href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+    <a href="{% url "blog_post_list_category" category.slug %}" class="href-color">
+        {{ category }}
+    </a>
+        {% if not forloop.last %}, {% endif %}
     {% endfor %}
     |
     {% endif %}
@@ -159,7 +164,9 @@
     </ul>
     {% endif %}
     <p>
-    <a href="{{ blog_post.get_absolute_url }}">{% trans "[read more]" %}</a>
+    <a href="{{ blog_post.get_absolute_url }}" class="href-color">
+        {% trans "[read more]" %}
+    </a>
    
     </p>
 </div>

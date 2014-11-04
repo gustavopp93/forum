@@ -1,5 +1,26 @@
 {% load forum_tags keyword_tags mezzanine_tags i18n future %}
 
+{% block blog_categories %}
+    {% forum_categories as categories %}
+    {% if categories %}
+        <h4>{% trans "Categories" %}</h4>
+        <div class="hline"></div>
+        {% for category in categories %}
+            <p>
+                <a href="{% url "forum_post_list_category" category.slug %}" class="href-color">
+                    <i class="fa fa-angle-right"></i>
+                    {{ category }}
+                </a>
+                <span class="badge badge-theme pull-right">
+                    {{ category.post_count }}
+                </span>
+            </p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+<div class="spacing"></div>
+
 {% block blog_recent_posts %}
     {% forum_recent_posts 5 as recent_posts %}
     {% if recent_posts %}
@@ -32,7 +53,7 @@
                 {% endif %}
                 <h6>{{ month.date.year }}</h6><ul class="list-unstyled">
             {% endifchanged %}
-            <li><a href="{% url "forum_post_list_month" year=month.date.year month=month.date.month %}"
+            <li><a href="{% url "forum_post_list_month" year=month.date.year month=month.date.month %}" class="href-color"
                 >{{ month.date|date:"F" }}</a> ({{ month.post_count }})</li>
         {% endfor %}
         </ul>
@@ -40,26 +61,6 @@
 {% endblock %}
 
 <div class="spacing"></div>
-
-{% block blog_categories %}
-    {% forum_categories as categories %}
-    {% if categories %}
-        <h4>{% trans "Categories" %}</h4>
-        <div class="hline"></div>
-        {% for category in categories %}
-            <p>
-                <a href="{% url "forum_post_list_category" category.slug %}">
-                    <i class="fa fa-angle-right"></i>
-                    {{ category }}
-                </a>
-                <span class="badge badge-theme pull-right">
-                    {{ category.post_count }}
-                </span>
-            </p>
-        {% endfor %}
-    {% endif %}
-{% endblock %}
-
 
 {% block blog_authors %}
     {% forum_authors as authors %}
@@ -69,7 +70,7 @@
         <div class="hline"></div>
         <p>
             {% for author in authors %}
-                <a href="{% url "forum_post_list_author" author.username %}"
+                <a href="{% url "forum_post_list_author" author.username %}" class="href-color"
                     ><i class="fa fa-angle-right"></i> {{ author.get_full_name|default:author.username }}</a>
                     ({{ author.post_count }})
             {% endfor %}

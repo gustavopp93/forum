@@ -36,7 +36,7 @@ msgstr "Requerido (no se publicará)"
 #: forum/models.py:22 templates/blog/includes/filter_panel.html:52
 #: templates/forum/includes/filter_panel.html:47
 msgid "Categories"
-msgstr "Etiquetas"
+msgstr "Categorias"
 
 #: forum/models.py:25 forum/models.py:69
 #: templates/generic/includes/comments.html:3

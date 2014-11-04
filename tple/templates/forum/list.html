@@ -92,7 +92,9 @@
     <csmall>
     {% trans "Posted by" %}:
     {% with forum_post.user as author %}
-    <a href="{% url "forum_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+    <a href="{% url "forum_post_list_author" author %}" class="href-color">
+        {{ author.get_full_name|default:author.username }}
+    </a>
     {% endwith %}
     </csmall>
     |
@@ -102,7 +104,10 @@
      <csmall>
     {% trans "in" %}
     {% for category in categories %}
-    <a href="{% url "forum_post_list_category" category.slug %}">{{ category }}</a>{% if not forloop.last %}, {% endif %}
+    <a href="{% url "forum_post_list_category" category.slug %}" class="href-color">
+        {{ category }}
+    </a>
+        {% if not forloop.last %}, {% endif %}
     {% endfor %}
     |
     {% endif %}
@@ -154,7 +159,9 @@
     </ul>
     {% endif %}
     <p>
-    <a href="{{ forum_post.get_absolute_url }}">{% trans "read more" %}</a>
+    <a href="{{ forum_post.get_absolute_url }}" class="href-color">
+        {% trans "read more" %}
+    </a>
 
     </p>
 </div>

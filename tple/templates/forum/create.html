@@ -33,6 +33,8 @@
 
         $('#div_id_categories').find('label').after('<i class="fa fa-question-circle" id="categories-tooltip"></i>');
         $('#categories-tooltip').tooltip({title: 'Asigna una o más etiquetas para tu contribución'});
+
+        $('#hint_id_categories').remove();
     </script>
 {% endblock main %}
 {% block right_wrapper %}
