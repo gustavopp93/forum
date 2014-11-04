@@ -462,4 +462,4 @@ LOCALE_PATHS = (
     os.path.join(PROJECT_ROOT, 'conf/locale') ,
 )
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

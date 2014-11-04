@@ -28,8 +28,8 @@
     {% if not comment.is_removed and comment.is_public %}
 
         {% if request.user.is_authenticated %}
-            <a href="{{ request.path }}#spam-{{ comment.id }}" class="spam">
-                <span class="glyphicon glyphicon-link"></span>
+            <a class="spam" style="cursor: pointer">
+                <i class="glyphicon glyphicon-link"></i>
                 Spam
             </a> |
         {% endif %}
