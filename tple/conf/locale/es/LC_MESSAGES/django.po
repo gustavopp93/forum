@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-03 11:40-0500\n"
+"POT-Creation-Date: 2014-11-04 10:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,24 +25,23 @@ msgstr ""
 msgid "Meta data"
 msgstr ""
 
-#: forum/forms.py:52 templates/generic/includes/comment.html:33
-#: templates/generic/includes/comment.html:56
+#: forum/forms.py:58
 msgid "Spam"
-msgstr ""
+msgstr "¿Por qué lo consideras spam?"
 
-#: forum/forms.py:53
+#: forum/forms.py:59
 msgid "Requerido (no publicado)"
-msgstr ""
+msgstr "Requerido (no se publicará)"
 
 #: forum/models.py:22 templates/blog/includes/filter_panel.html:52
 #: templates/forum/includes/filter_panel.html:47
 msgid "Categories"
-msgstr ""
+msgstr "Etiquetas"
 
 #: forum/models.py:25 forum/models.py:69
 #: templates/generic/includes/comments.html:3
 msgid "Comments"
-msgstr ""
+msgstr "Comentarios"
 
 #: forum/models.py:26
 msgid "Rating"
@@ -56,19 +55,23 @@ msgstr ""
 msgid "Forum posts"
 msgstr ""
 
-#: forum/models.py:68 templates/generic/includes/comments.html:29
+#: forum/models.py:68
 msgid "Comment"
+msgstr "Comentario"
+
+#: forum/views.py:149
+msgid "Se guardó como spam"
 msgstr ""
 
-#: templates/base.html:67
+#: templates/base.html:70
 msgid "Toggle Navigation"
 msgstr ""
 
-#: templates/base.html:176
+#: templates/base.html:177
 msgid "Template by"
 msgstr ""
 
-#: templates/base.html:178
+#: templates/base.html:179
 msgid "Mezzanine theme by"
 msgstr ""
 
@@ -80,17 +83,17 @@ msgstr ""
 #: templates/pages/menus/mobile.html:10 templates/pages/menus/primary.html:8
 #: templates/pages/menus/tree.html:9
 msgid "Home"
-msgstr ""
+msgstr "Inicio"
 
 #: templates/index.html:231 templates/blog/includes/filter_panel.html:6
 #: templates/forum/includes/filter_panel.html:6
 msgid "Recent Posts"
-msgstr ""
+msgstr "Contribuciones recientes"
 
 #: templates/search_results.html:5 templates/search_results.html.py:6
 #: templates/search_results.html:15
 msgid "Search Results"
-msgstr ""
+msgstr "Resultados de la búsqueda"
 
 #: templates/search_results.html:22
 #, python-format
@@ -109,17 +112,86 @@ msgstr ""
 
 #: templates/search_results.html:37 templates/forum/list.html:157
 msgid "read more"
+msgstr "Ver más..."
+
+#: templates/accounts/account_login.html:7
+msgid ""
+"You're already logged in. If you'd like to log in as a different user, "
+"you'll need to log out first."
+msgstr ""
+
+#: templates/accounts/account_login.html:11
+#, python-format
+msgid ""
+"If you don't have an account you can <a href=\"%(signup_url)s?next=%(next)s"
+"\">sign up</a> for one now."
+msgstr ""
+
+#: templates/accounts/account_login.html:14
+#, python-format
+msgid ""
+"<p>You can also <a href=\"%(password_reset_url)s?next=%(profile_update_url)s"
+"\">reset your password</a> if you've forgotten it.</p>"
+msgstr ""
+
+#: templates/accounts/account_password_reset.html:6
+msgid ""
+"Enter your username or email address and you'll receive an email with a link "
+"you need to click, in order to log in and change your password."
+msgstr ""
+
+#: templates/accounts/account_profile.html:18
+#: templates/accounts/includes/user_panel.html:11
+msgid "Update profile"
+msgstr ""
+
+#: templates/accounts/account_signup.html:7
+msgid ""
+"You're already logged in. If you'd like to create a new account, you'll need "
+"to log out first."
+msgstr ""
+
+#: templates/accounts/account_signup.html:11
+msgid ""
+"After signing up, your account will be reviewed for approval. You'll receive "
+"an email when your account is activated."
+msgstr ""
+
+#: templates/accounts/account_signup.html:13
+msgid ""
+"After signing up, you'll receive an email with a link you need to click, in "
+"order to activate your account."
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:5
+msgid "Logged in as: "
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:17
+#: templates/accounts/includes/user_panel_nav.html:11
+#: templates/includes/editable_toolbar.html:9
+msgid "Log out"
+msgstr "Salir"
+
+#: templates/accounts/includes/user_panel.html:20
+#: templates/accounts/includes/user_panel_nav.html:14
+msgid "Log in"
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:29
+#: templates/accounts/includes/user_panel_nav.html:16
+msgid "Sign up"
 msgstr ""
 
 #: templates/blog/blog_post_detail.html:53
 #: templates/blog/blog_post_list.html:153
-#: templates/blog/includes/filter_panel.html:67 templates/forum/list.html:148
+#: templates/blog/includes/filter_panel.html:72 templates/forum/list.html:148
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #: templates/blog/blog_post_detail.html:98
 msgid "Related posts"
-msgstr ""
+msgstr "Contribuciones relacionadas"
 
 #: templates/blog/blog_post_list.html:4 templates/blog/blog_post_list.html:22
 msgid "Blog"
@@ -127,35 +199,35 @@ msgstr ""
 
 #: templates/blog/blog_post_list.html:31 templates/forum/list.html:31
 msgid "Tag:"
-msgstr ""
+msgstr "Etiqueta:"
 
 #: templates/blog/blog_post_list.html:33 templates/forum/list.html:33
 msgid "Category:"
-msgstr ""
+msgstr "Categoría:"
 
 #: templates/blog/blog_post_list.html:37 templates/forum/list.html:37
 msgid "Author:"
-msgstr ""
+msgstr "Contribuyente:"
 
 #: templates/blog/blog_post_list.html:53 templates/forum/list.html:53
 msgid "Viewing posts tagged"
-msgstr ""
+msgstr "Ver contribuciones etiquetadas con"
 
 #: templates/blog/blog_post_list.html:55 templates/forum/list.html:55
 msgid "Viewing posts for the category"
-msgstr ""
+msgstr "Ver contribuciones de la categoría"
 
 #: templates/blog/blog_post_list.html:57 templates/forum/list.html:57
 msgid "Viewing posts from"
-msgstr ""
+msgstr "Ver contribuciones de"
 
 #: templates/blog/blog_post_list.html:60 templates/forum/list.html:60
 msgid "Viewing posts by"
-msgstr ""
+msgstr "Ver contribuciones de"
 
 #: templates/blog/blog_post_list.html:99 templates/forum/list.html:93
 msgid "Posted by"
-msgstr ""
+msgstr "Escrito por"
 
 #: templates/blog/blog_post_list.html:108 templates/forum/list.html:103
 msgid "in"
@@ -177,21 +249,21 @@ msgstr[1] ""
 
 #: templates/blog/blog_post_list.html:162
 msgid "[read more]"
-msgstr ""
+msgstr "Ver más..."
 
-#: templates/blog/includes/filter_panel.html:35
+#: templates/blog/includes/filter_panel.html:26
 #: templates/forum/includes/filter_panel.html:26
 msgid "Archive"
 msgstr ""
 
-#: templates/blog/includes/filter_panel.html:84
+#: templates/blog/includes/filter_panel.html:88
 #: templates/forum/includes/filter_panel.html:68
 msgid "Authors"
 msgstr ""
 
 #: templates/email/comment_notification.html:6
 msgid "A new comment has been posted on"
-msgstr ""
+msgstr "Se ha agregado un nuevo comentario"
 
 #: templates/email/comment_notification.html:10
 #, python-format
@@ -211,20 +283,20 @@ msgstr ""
 #: templates/errors/404.html:6 templates/errors/404.html.py:10
 #: templates/errors/404.html:15
 msgid "Page not found"
-msgstr ""
+msgstr "Página no encontrada"
 
 #: templates/errors/404.html:16
 msgid "The page you requested does not exist."
-msgstr ""
+msgstr "La página solicitada no existe."
 
 #: templates/errors/500.html:6 templates/errors/500.html.py:10
 #: templates/errors/500.html:15
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: templates/errors/500.html:16
 msgid "Sorry, an error occurred."
-msgstr ""
+msgstr "¡Lo sentimos! Ha ocurrido un error."
 
 #: templates/filebrowser/index.html:63
 msgid "New Folder"
@@ -232,102 +304,102 @@ msgstr ""
 
 #: templates/filebrowser/index.html:64
 msgid "Upload"
-msgstr ""
+msgstr "Subir"
 
 #: templates/filebrowser/include/filelisting.html:18
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
 #: templates/filebrowser/include/filelisting.html:32
 #: templates/filebrowser/include/filelisting.html:46
 #: templates/filebrowser/include/filelisting.html:60
 msgid "Select File"
-msgstr ""
+msgstr "Seleccionar archivo"
 
 #: templates/filebrowser/include/filelisting.html:76
 msgid "View Image"
-msgstr ""
+msgstr "Ver imagen"
 
 #: templates/filebrowser/include/filelisting.html:92
 msgid "Rename"
-msgstr ""
+msgstr "Renombrar"
 
 #: templates/filebrowser/include/filelisting.html:105
 msgid "Are you sure you want to delete this file?"
-msgstr ""
+msgstr "¿Quieres eliminar este archivo?"
 
 #: templates/filebrowser/include/filelisting.html:105
 msgid "Delete File"
-msgstr ""
+msgstr "Eliminar archivo"
 
 #: templates/filebrowser/include/filelisting.html:108
 msgid "Are you sure you want to delete this Folder?"
-msgstr ""
+msgstr "¿Quieres eliminar esta carpeta?"
 
 #: templates/filebrowser/include/filelisting.html:108
 msgid "Delete Folder"
+msgstr "¿Quieres eliminar esta carpeta?"
+
+#: templates/forum/create.html:13
+msgid "Crear post"
 msgstr ""
 
 #: templates/forum/list.html:22
 msgid "Forum"
-msgstr ""
+msgstr "Foro"
 
 #: templates/generic/includes/comment.html:38
 #: templates/generic/includes/comment.html:68
 msgid "Reply"
-msgstr ""
+msgstr "Responder comentario"
 
 #: templates/generic/includes/comment.html:74
 msgid "Comment deleted"
-msgstr ""
+msgstr "Comentario eliminado"
 
 #: templates/generic/includes/comment.html:76
 msgid "Comment awaiting approval"
-msgstr ""
+msgstr "Comentario esperando aprobación"
 
 #: templates/generic/includes/comment.html:90
 msgid "There are currently no comments"
-msgstr ""
+msgstr "No hay comentarios"
 
 #: templates/generic/includes/comments.html:21
 msgid "New Comment"
-msgstr ""
+msgstr "Nuevo comentario"
 
 #: templates/generic/includes/rating.html:5
 msgid "Current rating"
-msgstr ""
+msgstr "Calificación actual"
 
 #: templates/generic/includes/rating.html:7
 msgid "Currently unrated"
-msgstr ""
+msgstr "¿Te gustó esta contribución? ¡Califícala!"
 
 #: templates/generic/includes/rating.html:17
 msgid "Rate"
-msgstr ""
+msgstr "Calificar"
 
 #: templates/includes/editable_form.html:16
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: templates/includes/editable_form.html:17
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: templates/includes/editable_form.html:25
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: templates/includes/editable_toolbar.html:8
 msgid "Admin"
 msgstr ""
 
-#: templates/includes/editable_toolbar.html:9
-msgid "Log out"
-msgstr ""
-
 #: templates/includes/form_errors.html:8
 msgid "Please correct the errors below."
-msgstr ""
+msgstr "Por favor, corrige los errores mencionados"
 
 #: templates/includes/pagination.html:7
 msgid "Page"
