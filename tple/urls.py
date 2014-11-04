@@ -6,7 +6,7 @@ from django.contrib import admin
 
 from mezzanine.conf import settings
 from mezzanine.core.views import direct_to_template
-from forum.views import spam
+from forum.views import spam, DisclaimerTemplateView
 
 
 admin.autodiscover()
@@ -35,6 +35,11 @@ urlpatterns += patterns('',
 
     #TODO: DEFINE LANDING PAGE FILE
     url("^$", direct_to_template, {"template": "index.html"}, name="home"),
+
+
+    url("^declaracion-de-privacidad/$",
+        DisclaimerTemplateView.as_view(),
+        name="disclaimer"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
@@ -74,7 +79,7 @@ urlpatterns += patterns('',
     # ``mezzanine.urls``.
     url('', include('social.apps.django_app.urls', namespace='social')),
 
-    url(r'^forum', include('forum.urls')),
+    url(r'^foro', include('forum.urls')),
 
     url(r'^spam/$', spam, name="spam"),
 

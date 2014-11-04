@@ -12,6 +12,7 @@ from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
+from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
@@ -156,3 +157,7 @@ def spam(request, template="generic/comments.html"):
     context = {"obj": obj, "spam_form": form}
     response = render(request, template, context)
     return response
+
+
+class DisclaimerTemplateView(TemplateView):
+    template_name = 'disclaimer.html'
