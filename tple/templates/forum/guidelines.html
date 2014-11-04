@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n  %}
+
+{% block title %}
+    Foro: Guia de Uso
+{% endblock title %}
+
+{% block left_wrapper %}
+
+{% endblock left_wrapper %}
+
+{% block main %}
+<br>
+    <h2><b>Guia de uso</b></h2>
+    <br><br>
+    <ul>
+        <li>
+            Para participar del foro activamente, es necesario la creación de un perfil personal. Existen
+            dos maneras para crearlo: con un usuario y contraseña, o a través de tu cuenta de Facebook.
+            Si aún no te has registrado, dale clic  <a href="{% url 'signup' %}">
+                Aqui
+            </a>
+        </li><br>
+        <li>
+            Si tan solo quieres leer el contenido del foro, puedes ingresar como visitante, sin embargo, debes crear una cuenta para poder interactuar.
+        </li><br>
+        <li>
+            Para compartir una contribución, debes tener en cuenta los campos requeridos: título, contribución, etiquetas y categoría. Adicionalmente y de manera opcional, puedes agregar una imagen o un archivo a tu contribución.
+        </li><br>
+        <li>
+            Procura que el contenido de tu contribución sea lo más claro posible. Recuerda que tienes una cantidad determinada de caracteres para utilizar, y eso te permite ser bastante descriptivo.
+        </li><br>
+        <li>
+            Todos los usuarios logueados en el foro, podrán:
+            <ul>
+                <li>Compartir una contribución.</li>
+                <li>Comentar bajo cada contribución.</li>
+                <li>Calificar contribuciones y comentarios.</li>
+                <li>Marcar contribuciones y comentarios como spam.</li>
+            </ul>
+        </li>
+    </ul>
+{% endblock main %}
+
+{% block right_wrapper %}
+
+{% endblock right_wrapper %}

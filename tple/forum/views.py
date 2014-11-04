@@ -161,3 +161,11 @@ def spam(request, template="generic/comments.html"):
 
 class DisclaimerTemplateView(TemplateView):
     template_name = 'disclaimer.html'
+
+
+class ForumRules(TemplateView):
+    template_name = 'forum/rules.html'
+
+
+class ForumGuideLines(TemplateView):
+    template_name = 'forum/guidelines.html'

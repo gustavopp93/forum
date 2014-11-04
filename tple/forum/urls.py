@@ -6,7 +6,7 @@ from mezzanine.conf import settings
 
 
 # Leading and trailing slahes for urlpatterns based on setup.
-from forum.views import ForumPostCreateView
+from forum.views import ForumPostCreateView, ForumRules, ForumGuideLines
 
 _slashes = (
     "/" if settings.BLOG_SLUG else "",
@@ -14,9 +14,17 @@ _slashes = (
 )
 #
 urlpatterns = patterns("",
-    url(r"^/create/$",
+    url(r"^/crear/$",
         ForumPostCreateView.as_view(),
         name="forum_post_create"),
+
+    url(r"^/normas-de-uso/$",
+        ForumRules.as_view(),
+        name="forum_post_rules"),
+
+    url(r"^/guia-de-uso/$",
+        ForumGuideLines.as_view(),
+        name="forum_post_guidelines"),
 )
 
 # Forum patterns.
