@@ -8,7 +8,7 @@
     {% endif %}
 </span>
 
-{% if not rated or request.user.is_authenticated %}
+{% if not rated %}
 <form class="form-inline" role="form" method="post" action="{% url "rating" %}">
     {% nevercache %}
     {% csrf_token %}
