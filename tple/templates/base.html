@@ -178,7 +178,6 @@
                          <a href="http://www.blacktie.co">Blacktie</a>
                          {% trans "Mezzanine theme by" %}
                          <a href="http://thecodinghouse.in">CodingHouse</a>
-
                      </p>
                  </div>
             </div>
@@ -277,7 +276,15 @@
             {% if request.user.is_authenticated %}
                 var opener = window.opener;
                 if (opener) {
-                    opener.window.document.location.href=window.location.href;
+                    var current = opener.window.document.location.href;
+                    var destiny = window.location.href;
+                    destiny = destiny.replace('#_=_', '');
+                    if(current !== destiny){
+                        opener.window.document.location.href=window.location.href;
+                    }
+                    else{
+                        opener.window.document.location.reload();
+                    }
                     window.close();
                 }
             {% endif %}
